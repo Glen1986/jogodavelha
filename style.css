@@ -1,6 +1,10 @@
+body{
+  background-color: #ccc;
+}
 table{
-  width:40rem;
-  height:40rem;
+  width:60vw;
+  height:60vh;
+  margin: 0 auto;
 }
 td {
   border: 1px solid blue;
@@ -12,4 +16,10 @@ td:hover {
 
 table {
   border: 1px solid green;
+}
+@media screen and (min-width:768px){
+  table{
+    width:40rem;
+    height:40rem;
+  }
 }
