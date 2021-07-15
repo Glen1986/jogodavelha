@@ -17,18 +17,14 @@ const winningCombinations = [
 
 const cells = document.querySelectorAll('td');
 
-/*const handleClick = function(event) {
-    const cell = event.target
-    console.log(cell.id);
-}*/
-function resetGame() {
+const resetGame = () => {
    playerXSelections = new Array();
    playerOSelections = new Array();
    for (let i = 0; i < cells.length; i++) {
        cells[i].innerHTML = '';
    }
 }
-const checkWinner = function(e){
+const checkWinner = (e) =>{
    winningCombinations.forEach((winerVal, winerIn, wnerArr) =>{
     let match = 0;
        winerVal.forEach((winVal, winIn, winArr)=>{
