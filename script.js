@@ -15,13 +15,40 @@ const winningCombinations = [
     [3, 5, 7]
 ];
 
+const cells = document.querySelectorAll('td');
+
 /*const handleClick = function(event) {
     const cell = event.target
     console.log(cell.id);
 }*/
+function resetGame() {
+   playerXSelections = new Array();
+   playerOSelections = new Array();
+   for (let i = 0; i < cells.length; i++) {
+       cells[i].innerHTML = '';
+   }
+}
+const checkWinner = function(e){
+   winningCombinations.forEach((winerVal, winerIn, wnerArr) =>{
+    let match = 0;
+       winerVal.forEach((winVal, winIn, winArr)=>{
+
+           if(playerSelections.includes(winVal)){
+               match++;
+           }
+           if( match === 3 ){
+             alert('Player ' + currentPlayer + ' wins!');
+             resetGame();
+           }
+         });
+    });
+}
+
+function checkDraw() {
+   return (playerOSelections.length + playerXSelections.length) >= cells.length;
+}
 const handleClick = function (event) {
     const cell = event.target;
-
     cell.innerHTML = currentPlayer;
 
     if (currentPlayer === 'X' ) {
@@ -34,34 +61,21 @@ const handleClick = function (event) {
 
     playerSelections.push(Number(cell.id));
 
-    // Swap players
+     if (checkWinner(playerSelections)) {
+       alert('Player ' + currentPlayer + ' wins!');
+       resetGame();
+     }
+     if (checkDraw()) {
+       alert('Draw!');
+       resetGame();
+     }
+        // Swap players
     currentPlayer = nextPlayer;
 }
-const cells = document.querySelectorAll('td');
+
 
 for (let i = 0; i < cells.length; i++) {
     cells[i].addEventListener('click', handleClick);
-}
-function checkWinner() {
-   // Verifica para cada combinação  se o jogador tem todos os valores
-   for each winning combination
-       matches = 0
-       for each cell in combination
-           if player has cell
-               matches++
-           else break // vai para a próxima combinação
-           if there are 3 matches
-               return true
-
-   // Se nós percorremos todas as combinações sem retornar true
-   // então o jogador não venceu
-   return false
-}
-
-
-
-function checkDraw() {
-   return (playerOSelections.length + playerXSelections.length) >= cells.length;
 }
 
 
